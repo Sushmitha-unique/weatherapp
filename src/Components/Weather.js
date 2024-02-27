@@ -37,7 +37,10 @@ import winter from "../Images/winter.avif"
         <h1>Month:{month}</h1>
         
         {
-         hemisphere && hemisphere === "North" && month>=4 && month<=10 &&
+         hemisphere && (
+          (hemisphere === "North" && month>=4 && month<=10) ||
+          (hemisphere === "south" && (month<4 || month>10))
+          ) &&
            (
             <div>
               <h1>Summer Season</h1>
@@ -46,7 +49,9 @@ import winter from "../Images/winter.avif"
           )
         }
         {
-          hemisphere && hemisphere === "North" && (month<4 || month>10) &&
+          hemisphere &&
+           ((hemisphere === "North" && (month<4 || month>10)) || 
+           (hemisphere === "south" && month>=4 && month<=10)) &&
           (
             <div>
               <h1>Winter Season</h1>
@@ -54,25 +59,6 @@ import winter from "../Images/winter.avif"
             </div>
           )  
         }
-         {
-         hemisphere && hemisphere === "south" && month>=4 && month<=10 &&
-           (
-            <div>
-              <h1>Winter Season</h1>
-              <img src= {winter} alt ="winter"/>
-            </div>
-          )
-        }
-        {
-          hemisphere && hemisphere === "south" && (month<4 || month>10) &&
-          (
-            <div>
-            <h1>Summer Season</h1>
-            <img src= {summer} alt ="summer"/>
-          </div>
-          )  
-        }
-
     </div>
   )
 }
