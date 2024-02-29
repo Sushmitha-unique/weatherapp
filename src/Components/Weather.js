@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import summer from "../Images/summer.avif"
 import winter from "../Images/winter.avif"
  const Weather = () => {
@@ -28,9 +28,13 @@ import winter from "../Images/winter.avif"
             }
         )
     }
+    useEffect (
+      ()=>{
+        fetch()
+      },[]
+    )
   return (
     <div>
-        <button onClick={fetch}>Fetch</button>
         <h1>Latitude:{latitude}</h1>
         <h1>Longitude:{longitude}</h1>
         <h1>Hemisphere:{hemisphere}</h1>
